@@ -1,2 +1,4 @@
 gitt
 *.iml
+*/target/*
+.idea/*
