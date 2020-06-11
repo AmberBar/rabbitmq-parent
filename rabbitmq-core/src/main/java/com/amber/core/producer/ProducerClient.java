@@ -24,7 +24,7 @@ public class ProducerClient implements MessageProducer {
 
     @Override
     public void send(Message message) throws MessageRuntimeException {
-        Preconditions.checkNotNull(message.getTopic()); // 谷歌的工具包
+        Preconditions.checkNotNull(message.getExchange()); // 谷歌的工具包
         String messageType = message.getMessageType();
         switch (messageType) {
             case MessageType.RAPID:

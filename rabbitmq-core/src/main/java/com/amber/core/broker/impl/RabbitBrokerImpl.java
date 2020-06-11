@@ -47,12 +47,10 @@ public class RabbitBrokerImpl implements RabbitBroker {
     public void senKernel(Message message) {
         AsyncBaseQueue.submit(() -> {
             CorrelationData correlationData = new CorrelationData(message.getMessageId());
-            String topic = message.getTopic();
+            String exchange = message.getExchange();
             String routingKey = message.getRoutingKey();
-            rabbitTemplate.convertAndSend(topic,
-                    routingKey,
-                    message,
-                    correlationData);
+            // 发送消息到MQ
+            rabbitTemplate.convertAndSend(exchange, routingKey, message, correlationData);
         });
 
         log.info("#RabbitBrokerImpl.sendKernel# send to rabbitMq, messageId : {}", message.getMessageId());

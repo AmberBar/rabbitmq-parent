@@ -27,10 +27,10 @@ public class Message implements Serializable {
     private String messageId;
 
     /**
-     * 消息的主题 这里的topic实际上还可以再对exchange进行封装
+     * exchange 交换机name
      * TODO
      */
-    private String topic;
+    private String exchange;
 
     /**
      * 消息的路由规则
